@@ -1,8 +1,77 @@
-#Environment variable
-.env
-*.env
+# =========================
+# Python & Environment
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 venv/
-.venv
+.venv/
+.env
+
+# =========================
+# Jupyter Notebooks
+# =========================
+.ipynb_checkpoints
+
+# =========================
+# PyTorch & Model Weights
+# =========================
+*.pt
+*.pth
+*.ckpt
+lightning_logs/
+
+# =========================
+# Data (Tracked by DVC instead)
+# =========================
+# Ignore the actual data files, but DO NOT ignore the .dvc tracking files
+/data/raw/*
+/data/processed/*
+!/data/raw/*.dvc
+!/data/processed/*.dvc
+*.csv
+*.txt
+*.dat
+
+# =========================
+# MLOps Tools (W&B, ZenML, DVC)
+# =========================
+wandb/
+.zen/
+.dvc/cache/
+.dvc/tmp/
+*.dvc
+
+# =========================
+# OS & IDE Files
+# =========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.vscode/
+.idea/
 
 #project files
 *.pdf
