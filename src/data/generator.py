@@ -5,7 +5,8 @@ from pathlib import Path
 def generate_equation():
     """Generates a simple math equation and its reversed answer."""
     ops = ['+', '-', '*']
-    op = random.choice(ops)
+    weights = [0.2, 0.4, 0.4]  
+    op = random.choices(ops, weights=weights, k=1)[0]
     
     # Generate numbers heavily weighted towards smaller lengths to help the model learn
     a = random.randint(1, 999)
@@ -49,7 +50,7 @@ if __name__ == "__main__":
     train_path = project_root / "data" / "raw" / "train.txt"
     val_path = project_root / "data" / "raw" / "val.txt"
 
-    # Generate 50,000 samples for training
-    create_dataset(train_path, 50000)
+    # Generate 100,000 samples for training
+    create_dataset(train_path, 100000)
     # Generate 5,000 samples for validation
-    create_dataset(val_path, 5000)
+    create_dataset(val_path, 10000)
