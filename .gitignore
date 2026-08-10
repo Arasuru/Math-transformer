@@ -1,0 +1,8 @@
+#Environment variable
+.env
+*.env
+venv/
+.venv
+
+#project files
+*.pdf
