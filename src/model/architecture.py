@@ -17,7 +17,7 @@ class PositionalEncoding(nn.Module):
 
 class MathTransformer(nn.Module):
 
-    def __init__(self, vocab_size, pad_token_id, d_model=64, nhead=4, num_layers=3, max_len=100):
+    def __init__(self, vocab_size, pad_token_id, d_model=128, nhead=4, num_layers=3, max_len=100):
         super().__init__()
         self.d_model = d_model
         self.pad_token_id = pad_token_id
