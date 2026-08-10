@@ -58,7 +58,7 @@ wandb/
 .zen/
 .dvc/cache/
 .dvc/tmp/
-*.dvc
+
 
 # =========================
 # OS & IDE Files
