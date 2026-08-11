@@ -18,12 +18,11 @@ stages:
       - checkpoints/
   
   evaluate:
-  cmd: python -m src.evaluate
+    cmd: python -m src.evaluate
     deps:
       - checkpoints/
       - data/raw/val.txt
       - src/evaluate.py
     metrics:
-      - metrics.json
-        cache: false
-        
+      - metrics.json:
+          cache: false
