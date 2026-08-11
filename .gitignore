@@ -75,3 +75,4 @@ Thumbs.db
 
 #project files
 *.pdf
+/checkpoints

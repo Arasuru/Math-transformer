@@ -1,0 +1,65 @@
+schema: '2.0'
+stages:
+  generate_data:
+    cmd: python -m src.data.generator
+    deps:
+    - path: src/data/generator.py
+      hash: md5
+      md5: 00c066b2054393c4f47f2e9817c0eed7
+      size: 1834
+    outs:
+    - path: data/raw/train.txt
+      hash: md5
+      md5: 0b811d5efd0b43f7b62ce1d1f57ff76a
+      size: 1839145
+    - path: data/raw/val.txt
+      hash: md5
+      md5: ebdaab0a916eac49fa2923b7827d4340
+      size: 122567
+  train:
+    cmd: python -m src.train
+    deps:
+    - path: data/raw/train.txt
+      hash: md5
+      md5: 0b811d5efd0b43f7b62ce1d1f57ff76a
+      size: 1839145
+    - path: data/raw/val.txt
+      hash: md5
+      md5: ebdaab0a916eac49fa2923b7827d4340
+      size: 122567
+    - path: src/model/
+      hash: md5
+      md5: c3c5f4ed0b19b3ebafd96e49f293cc84.dir
+      size: 12363
+      nfiles: 4
+    - path: src/train.py
+      hash: md5
+      md5: 51ad0d09bc8f2feb62f227455d629ec2
+      size: 2405
+    outs:
+    - path: checkpoints/
+      hash: md5
+      md5: 28a629faaa3b7d8718eb69cade6e6586.dir
+      size: 16998317
+      nfiles: 1
+  evaluate:
+    cmd: python -m src.evaluate
+    deps:
+    - path: checkpoints/
+      hash: md5
+      md5: 28a629faaa3b7d8718eb69cade6e6586.dir
+      size: 16998317
+      nfiles: 1
+    - path: data/raw/val.txt
+      hash: md5
+      md5: ebdaab0a916eac49fa2923b7827d4340
+      size: 122567
+    - path: src/evaluate.py
+      hash: md5
+      md5: b082be049523a82041621210e6a72526
+      size: 2763
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: 59b86332e0a9a9fc2a95f9771b4586cc
+      size: 122

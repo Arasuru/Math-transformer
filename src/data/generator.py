@@ -51,6 +51,6 @@ if __name__ == "__main__":
     val_path = project_root / "data" / "raw" / "val.txt"
 
     # Generate 100,000 samples for training
-    create_dataset(train_path, 100000)
+    create_dataset(train_path, 150000)
     # Generate 5,000 samples for validation
     create_dataset(val_path, 10000)
