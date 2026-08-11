@@ -54,7 +54,7 @@ def main():
     )
 
     # Setup WandB logger
-    wandb_logger = WandbLogger(project="math-transformer", name="run-dmodel-128", log_model=True)
+    wandb_logger = WandbLogger(project="math-transformer", name="run-dmodel-128", log_model="all")
 
     # Setup model checkpointing
     checkpoint_callback = ModelCheckpoint(

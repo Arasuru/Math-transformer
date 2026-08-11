@@ -1,0 +1,29 @@
+stages:
+  generate_data:
+    cmd: python -m src.data.generator
+    deps:
+      - src/data/generator.py
+    outs:
+      - data/raw/train.txt
+      - data/raw/val.txt
+  
+  train:
+    cmd: python -m src.train
+    deps:
+      - data/raw/train.txt
+      - data/raw/val.txt
+      - src/train.py
+      - src/model/
+    outs:
+      - checkpoints/
+  
+  evaluate:
+  cmd: python -m src.evaluate
+    deps:
+      - checkpoints/
+      - data/raw/val.txt
+      - src/evaluate.py
+    metrics:
+      - metrics.json
+        cache: false
+        
