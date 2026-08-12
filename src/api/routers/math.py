@@ -12,26 +12,23 @@ from src.data.tokenizer import CharTokenizer
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1", tags=["Math operations"])
 
+
 @router.post("/predict", response_model=MathResponse)
 def predict_math(
     request: MathRequest,
     model: MathLightningModule = Depends(get_model),
-    tokenizer: CharTokenizer = Depends(get_tokenizer)
+    tokenizer: CharTokenizer = Depends(get_tokenizer),
 ):
     logger.info(f"Received prediction request for equation: {request.equation}")
-    
+
     try:
         # Pass the injected dependencies directly to your inference function
         answer = generate_answer(model, tokenizer, request.equation)
         logger.info(f"Successfully predicted answer: {answer}")
-        
+
         return MathResponse(
-            equation=request.equation,
-            prediction=answer,
-            status="success"
+            equation=request.equation, prediction=answer, status="success"
         )
     except Exception as e:
         logger.error(f"Error during prediction: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail="Internal inference error.")
-    
-    

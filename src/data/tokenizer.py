@@ -1,13 +1,31 @@
 class CharTokenizer:
     def __init__(self):
-        self.chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '=', '<PAD>', '<SOS>', '<EOS>']
+        self.chars = [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "+",
+            "-",
+            "*",
+            "=",
+            "<PAD>",
+            "<SOS>",
+            "<EOS>",
+        ]
 
         self.char_to_idx = {char: idx for idx, char in enumerate(self.chars)}
         self.idx_to_char = {idx: char for idx, char in enumerate(self.chars)}
 
-        self.pad_token_id = self.char_to_idx['<PAD>']
-        self.eos_token_id = self.char_to_idx['<EOS>']
-        self.sos_token_id = self.char_to_idx['<SOS>']
+        self.pad_token_id = self.char_to_idx["<PAD>"]
+        self.eos_token_id = self.char_to_idx["<EOS>"]
+        self.sos_token_id = self.char_to_idx["<SOS>"]
 
         self.vocab_size = len(self.chars)
 
@@ -17,7 +35,13 @@ class CharTokenizer:
 
     def decode(self, token_ids):
         "decoding a list of token ids into a string equation"
-        return ''.join([self.idx_to_char[idx] for idx in token_ids if idx not in [self.pad_token_id, self.eos_token_id, self.sos_token_id]])
+        return "".join(
+            [
+                self.idx_to_char[idx]
+                for idx in token_ids
+                if idx not in [self.pad_token_id, self.eos_token_id, self.sos_token_id]
+            ]
+        )
 
 
 if __name__ == "__main__":
