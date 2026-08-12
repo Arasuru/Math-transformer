@@ -35,7 +35,7 @@ jobs:
         run: |
           pytest tests/
         
-      -name: Verify Docker build
+      - name: Verify Docker build
         run: |
           docker build -t math-transformer .
           
