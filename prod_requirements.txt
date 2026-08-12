@@ -3,3 +3,4 @@ pytorch-lightning
 fastapi
 uvicorn
 pydantic
+pytest
