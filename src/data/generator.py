@@ -5,7 +5,7 @@ from pathlib import Path
 def generate_equation():
     """Generates a simple math equation and its reversed answer."""
     ops = ['+', '-', '*']
-    weights = [0.2, 0.4, 0.4]  
+    weights = [0.33, 0.33, 0.34]  
     op = random.choices(ops, weights=weights, k=1)[0]
     
     # Generate numbers heavily weighted towards smaller lengths to help the model learn
